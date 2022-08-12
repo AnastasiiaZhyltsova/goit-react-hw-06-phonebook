@@ -23,8 +23,8 @@ function App() {
       : dispatch(addItem(contact));
   };
 
-  const deleteContact = contactId => {
-    dispatch(removeItem(contactId));
+  const deleteContact = id => {
+    dispatch(removeItem(id));
   };
 
   const changeFilter = e => {
