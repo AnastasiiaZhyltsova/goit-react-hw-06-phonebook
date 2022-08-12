@@ -1,5 +1,3 @@
-// import { useState } from 'react';
-
 import Form from './Form';
 import Filter from './Filter';
 import ContactList from './ContactList';
@@ -13,14 +11,6 @@ import {
 } from '../redux/contactsSlice';
 
 function App() {
-  // const [contacts, setContacts] = useState(
-  //   () => JSON.parse(localStorage.getItem('contacts')) ?? []
-  // );
-  // const [filter, setFilter] = useState('');
-
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
   const dispatch = useDispatch();
   const contacts = useSelector(getItems);
   const filterText = useSelector(getFilter);
