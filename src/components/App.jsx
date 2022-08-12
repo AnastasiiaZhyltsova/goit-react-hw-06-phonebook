@@ -1,52 +1,15 @@
 import Form from './Form';
 import Filter from './Filter';
 import ContactList from './ContactList';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  addItem,
-  removeItem,
-  getItems,
-  filterItems,
-  getFilter,
-} from '../redux/contactsSlice';
 
 function App() {
-  const dispatch = useDispatch();
-  const contacts = useSelector(getItems);
-  const filterText = useSelector(getFilter);
-
-  const formSubmitHandler = contact => {
-    const normalzeName = contact.name.toLocaleLowerCase();
-
-    contacts.find(contact => contact.name.toLocaleLowerCase() === normalzeName)
-      ? alert(`${contact.name} is already in contacts`)
-      : dispatch(addItem(contact));
-  };
-
-  const deleteContact = id => {
-    dispatch(removeItem(id));
-  };
-
-  const changeFilter = e => {
-    dispatch(filterItems(e.currentTarget.value));
-  };
-
-  const getContactsFilter = () => {
-    const normalizedFilter = filterText.toLocaleLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(normalizedFilter)
-    );
-  };
-
-  const contactsFilter = getContactsFilter();
   return (
     <div>
       <h1>Phonebook</h1>
-      <Form onSubmit={formSubmitHandler} contacts={contacts} />
-
+      <Form />
       <h2>Contacts</h2>
-      <Filter value={filterText} onChange={changeFilter} />
-      <ContactList contacts={contactsFilter} onDeleteContact={deleteContact} />
+      <Filter />
+      <ContactList />
     </div>
   );
 }
